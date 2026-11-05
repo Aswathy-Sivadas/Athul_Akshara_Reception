@@ -1,5 +1,5 @@
 'use strict';
-var WEDDING_DATE = new Date('2026-11-22T10:50:00+05:30');
+var WEDDING_DATE = new Date('2026-11-23T17:00:00+05:30');
 
 // ── ENVELOPE — tap the wax seal to open ──
 var envSealWrap = document.getElementById('envSealWrap');
@@ -66,7 +66,7 @@ if (envSealWrap) {
 
 // ── TYPEWRITER HERO QUOTE ──
 var heroQuoteEl = document.getElementById('heroQuote');
-var quoteText   = '"Two Hearts. One Beautiful Journey."';
+var quoteText   = '"With Love, Blessings & Happiness."';
 var qtIndex     = 0;
 function typeHeroQuote() {
   if (!heroQuoteEl) return;
@@ -393,7 +393,7 @@ function downloadInvitationCard(e){
     logging: false
   }).then(function(canvas){
     var link = document.createElement('a');
-    link.download = 'Akshara-Athul-Wedding-Invitation.png';
+    link.download = 'Athulkrishna-Akshara-Reception-Invitation.png';
     link.href = canvas.toDataURL('image/png');
     document.body.appendChild(link);
     link.click();
@@ -422,27 +422,27 @@ function downloadCalendar(e){
   }
 
   var ics = [
-    'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Akshara Athul Wedding//EN',
+    'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Athulkrishna Akshara Reception//EN',
     'CALSCALE:GREGORIAN','METHOD:PUBLISH','BEGIN:VEVENT',
-    'UID:akshara-athul-wedding-2026@invitation',
+    'UID:athulkrishna-akshara-reception-2026@invitation',
     'DTSTAMP:'+fmtICS(new Date()),
-    'DTSTART;TZID=Asia/Kolkata:20261122T105000',
-    'DTEND;TZID=Asia/Kolkata:20261122T115000',
-    'SUMMARY:Wedding of Akshara Sivadas & Athul Krishna',
-    'DESCRIPTION:You are cordially invited to the wedding of Akshara Sivadas and Athul Krishna. Muhurtham: 10:50 AM to 11:50 AM IST.',
-    'LOCATION:R.K. Mahal\\, Annur Road\\, Boothimedu\\, Mettupalayam\\, Coimbatore\\, Tamil Nadu',
+    'DTSTART;TZID=Asia/Kolkata:20261123T170000',
+    'DTEND;TZID=Asia/Kolkata:20261123T210000',
+    'SUMMARY:Reception of Athulkrishna & Akshara',
+    'DESCRIPTION:You are cordially invited to the reception of Athulkrishna and Akshara. Reception timing: 05:00 PM to 09:00 PM IST.',
+    'LOCATION:Thevarcad Convention Centre\\, Valliyode\\, Palakkad\\, Kerala',
     'STATUS:CONFIRMED','TRANSP:OPAQUE',
     'BEGIN:VALARM','TRIGGER:-P1D','ACTION:DISPLAY',
-    'DESCRIPTION:Wedding of Akshara & Athul is tomorrow!','END:VALARM',
+    'DESCRIPTION:Athulkrishna & Akshara reception is tomorrow!','END:VALARM',
     'BEGIN:VALARM','TRIGGER:-PT2H','ACTION:DISPLAY',
-    'DESCRIPTION:Wedding of Akshara & Athul starts in 2 hours!','END:VALARM',
+    'DESCRIPTION:Athulkrishna & Akshara reception starts in 2 hours!','END:VALARM',
     'END:VEVENT','END:VCALENDAR'
   ].join('\r\n');
   var blob = new Blob([ics], { type:'text/calendar;charset=utf-8' });
   var url  = URL.createObjectURL(blob);
   var a    = document.createElement('a');
   a.href   = url;
-  a.download = 'Akshara_Athul_Wedding_22Nov2026.ics';
+  a.download = 'Athulkrishna_Akshara_Reception_23Nov2026.ics';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
@@ -463,12 +463,12 @@ function fmtICS(d){
 // ── WHATSAPP ──
 function shareWhatsApp(){
   var msg = encodeURIComponent(
-    'With immense joy, we invite you to celebrate the wedding of\n\n' +
-    '*Akshara Sivadas* and *Athul Krishna*\n\n' +
-    '📅 Sunday, 22 November 2026\n' +
-    '🕙 10:50 AM – 11:50 AM IST\n' +
-    '📍 R.K. Mahal, Annur Road, Boothimedu, Mettupalayam, Coimbatore\n\n' +
-    'Your presence and blessings would mean the world to us.\n\n' +
+    'We cordially invite you to the reception of\n\n' +
+    '*Athulkrishna* and *Akshara*\n\n' +
+    '📅 Monday, 23 November 2026\n' +
+    '🕔 05:00 PM to 09:00 PM IST\n' +
+    '📍 Thevarcad Convention Centre, Valliyode\n\n' +
+    'Your presence with family will make the celebration truly special.\n\n' +
     '💛 ' + window.location.href
   );
   window.open('https://wa.me/?text='+msg,'_blank','noopener,noreferrer');
