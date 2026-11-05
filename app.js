@@ -375,40 +375,30 @@ function downloadInvitationCard(e){
     celebrateConfetti(cx, cy);
   }
 
-  var card = document.querySelector('.inv-card');
-  if(!card){
-    console.warn('Invitation card element not found.');
-    return;
-  }
+  var btn = document.getElementById('downloadInvitationBtn');
+  var fileUrl = 'invitationcard.jpeg';
 
-  if(!window.html2canvas){
-    alert('Invitation card download is not available right now.');
-    return;
-  }
+  var link = document.createElement('a');
+  link.href = fileUrl;
+  link.download = 'invitationcard.jpeg';
+  link.rel = 'noopener';
+  link.style.display = 'none';
+  document.body.appendChild(link);
 
-  window.html2canvas(card, {
-    backgroundColor: '#fdf6e3',
-    scale: 2,
-    useCORS: true,
-    logging: false
-  }).then(function(canvas){
-    var link = document.createElement('a');
-    link.download = 'Athulkrishna-Akshara-Reception-Invitation.png';
-    link.href = canvas.toDataURL('image/png');
-    document.body.appendChild(link);
+  try {
     link.click();
-    document.body.removeChild(link);
+  } catch (error) {
+    window.open(fileUrl, '_blank');
+  }
 
-    var btn = document.getElementById('downloadInvitationBtn');
-    if(btn){
-      var orig = btn.innerHTML;
-      btn.innerHTML = '&#10003; Downloaded!';
-      btn.style.background = 'linear-gradient(135deg,#2d7a4f,#3a9e68)';
-      setTimeout(function(){ btn.innerHTML = orig; btn.style.background = ''; }, 3000);
-    }
-  }).catch(function(){
-    alert('The invitation card could not be downloaded. Please try again.');
-  });
+  document.body.removeChild(link);
+
+  if(btn){
+    var originalText = btn.innerHTML;
+    btn.innerHTML = '&#10003; Downloaded!';
+    btn.style.background = 'linear-gradient(135deg,#2d7a4f,#3a9e68)';
+    setTimeout(function(){ btn.innerHTML = originalText; btn.style.background = ''; }, 3000);
+  }
 }
 
 function downloadCalendar(e){
